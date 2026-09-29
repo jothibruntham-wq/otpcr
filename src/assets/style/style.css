@@ -1,0 +1,412 @@
+/* =========================================================
+   OTP VERIFICATION - GLASSMORPHISM & DYNAMIC UNDERLINE STYLES
+   ========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+overflow-x:hidden;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #08090f;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================================
+   MAIN BODY & AMBIENT NEON GLOWS
+   ========================================================= */
+
+.otp-page {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 16px;
+  overflow: hidden;
+  user-select: none;
+  background: radial-gradient(circle at center, #0f0f18 0%, #06060a 100%);
+}
+
+.neon-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.35;
+  z-index: 1;
+  pointer-events: none;
+  animation: blobPulse 8s ease-in-out infinite alternate;
+}
+
+.blob-purple {
+  width: 360px;
+  height: 360px;
+  background: #9d4edd;
+  top: 18%;
+  left: 20%;
+}
+
+.blob-orange {
+  width: 400px;
+  height: 400px;
+  background: #ff7700;
+  bottom: 18%;
+  right: 20%;
+  animation-duration: 10s;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes blobPulse {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.1) translate(20px, -20px);
+  }
+}
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.main-title {
+  color: #ffffff;
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  z-index: 10;
+  text-align: center;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* =========================================================
+   AUTHENTIC GLASSMORPHISM CARD
+   ========================================================= */
+
+.glass-card {
+  position: relative;
+  width: 92%;
+  max-width: 440px;
+  padding: 2.4rem 2rem;
+  border-radius: 24px;
+  text-align: center;
+  z-index: 10;
+  overflow: hidden;
+
+  /* Frosted Glass Effect */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+
+  box-shadow:
+    0 25px 60px -10px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(255, 120, 0, 0.06);
+
+  animation: cardFadeIn 0.5s ease-out;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.brand-name {
+  color: #ff9900;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px rgba(255, 153, 0, 0.4);
+}
+
+.heading {
+  color: #ffffff;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 0.3rem;
+}
+
+.subheading {
+  color: #9ca3af;
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   OTP INPUT CONTAINER & UNDERLINE EFFECT AFTER INTEGER
+   ========================================================= */
+
+.otp-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 2rem;
+}
+
+/* Base OTP Input Box with Underline Baseline */
+.otp-box {
+  width: 3.6rem;
+  height: 4rem;
+  border-radius: 12px 12px 4px 4px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 1.75rem;
+  font-weight: 800;
+  outline: none;
+  font-family: inherit;
+
+  /* Glass background with default subtle underline */
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.22);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 4px 15px rgba(0, 0, 0, 0.2);
+
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  caret-color: #ff9900;
+}
+
+/* Focused Input State */
+.otp-box:focus {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 170, 0, 0.4);
+  border-bottom: 3.5px solid #ffaa00;
+  box-shadow:
+    0 4px 16px rgba(255, 170, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   CRITICAL REQUIREMENT: AFTER INTEGER CAME, UNDERLINE APPEARS!
+   ========================================================= */
+
+.otp-box.filled,
+.otp-box[value]:not([value=""]) {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 153, 0, 0.12) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  border-color: rgba(255, 153, 0, 0.5);
+  /* Radiant glowing underline directly under the integer */
+  border-bottom: 4px solid #ff9900 !important;
+  box-shadow:
+    0 4px 20px rgba(255, 153, 0, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(255, 170, 0, 0.8);
+  animation: digitBounce 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes digitBounce {
+  0% {
+    transform: scale(0.85);
+  }
+  60% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Error State on Wrong OTP */
+.otp-box.error {
+  border-color: rgba(255, 60, 90, 0.8) !important;
+  border-bottom: 4px solid #ff3366 !important;
+  box-shadow: 0 4px 18px rgba(255, 51, 102, 0.7) !important;
+  background: rgba(255, 60, 90, 0.1) !important;
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-4px); }
+}
+
+/* =========================================================
+   GLASS MESSAGE BOX & BUTTONS
+   ========================================================= */
+
+.message-box {
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  gap: 12px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.message-title {
+  color: #ff9900;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.2rem;
+}
+
+.message-text {
+  color: #9ca3af;
+  font-size: 0.78rem;
+  letter-spacing: 0.4px;
+}
+
+.bold-white {
+  color: #ffffff;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.neon-btn-orange {
+  background: linear-gradient(135deg, #ff9900, #ff5500);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 0.65rem 1.1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(255, 120, 0, 0.35);
+  transition: all 0.25s ease;
+}
+
+.neon-btn-orange:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 120, 0, 0.55);
+  filter: brightness(1.1);
+}
+
+.neon-btn-orange:active {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   SUCCESS VERIFIED CARD
+   ========================================================= */
+
+.success-icon-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.success-glow {
+  width: 4.8rem;
+  height: 4.8rem;
+  border-radius: 50%;
+  border: 2px solid #00f2a9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00f2a9;
+  font-size: 2rem;
+  font-weight: 800;
+  background: rgba(0, 242, 169, 0.12);
+  box-shadow:
+    0 0 25px rgba(0, 242, 169, 0.45),
+    inset 0 0 12px rgba(0, 242, 169, 0.2);
+  animation: successPop 0.5s ease-out;
+}
+
+@keyframes successPop {
+  0% { transform: scale(0.5); opacity: 0; }
+  75% { transform: scale(1.12); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.neon-btn-success {
+  width: 100%;
+  background: linear-gradient(135deg, #00f2a9, #00b87c);
+  color: #03140e;
+  font-weight: 800;
+  padding: 0.85rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 25px rgba(0, 242, 169, 0.3);
+  transition: all 0.25s ease;
+}
+
+.neon-btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 242, 169, 0.45);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .glass-card {
+    padding: 2rem 1.4rem;
+  }
+  .otp-box {
+    width: 3.1rem;
+    height: 3.6rem;
+    font-size: 1.5rem;
+  }
+  .main-title {
+    font-size: 1.7rem;
+    letter-spacing: 2px;
+  }
+  .message-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .neon-btn-orange {
+    width: 100%;
+  }
+}
